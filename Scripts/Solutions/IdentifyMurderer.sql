@@ -8,4 +8,12 @@ LEFT JOIN get_fit_now_member m on gfnci.membership_id = m.id
 where gfnci.check_in_date = '20180109' and m.id LIKE('%48Z%')
 )
 
-SELECT * FROM get_fit_jan9
+SELECT gf.check_in_date
+, gf.membership_id
+, gf.membership_status
+, gf.name
+, p.license_id 
+, dl.plate_number 
+FROM get_fit_jan9 gf
+LEFT JOIN person p ON gf.person_id = p.id
+LEFT JOIN drivers_license dl on p.license_id = dl.id 
