@@ -2,9 +2,11 @@ WITH last_address AS (SELECT MAX(address_number) as address_number, address_stre
 GROUP BY address_street_name 
 )
 
-SELECT p.*
+SELECT p.name
+, i.transcript 
 FROM person p
 LEFT JOIN last_address la on la.address_number = p.address_number AND la.address_street_name = p.address_street_name
+LEFT JOIN interview i ON i.person_id = p.id 
 WHERE (la.last_house='Y' AND p.address_street_name = 'Northwestern Dr' )
 OR (p.name LIKE ('%Annabel%') AND p.address_street_name = 'Franklin Ave')
 
