@@ -11,7 +11,16 @@ WHERE event_name LIKE '%SQL%'
 GROUP BY event_name, person_id, event_year_month
 )
 
-SELECT * 
+SELECT 
+p.name 
+,p.id 
+,dl.hair_color
+, dl.height 
+, dl.car_make || ' ' || dl.car_model  as vehicle
+, e.event_name
+, e.events_attended
+, e.event_year_month
+, i.annual_income 
 FROM drivers_license dl 
 LEFT JOIN person p on dl.id = p.license_id
 LEFT JOIN events_by_person e ON p.id=e.person_id 
