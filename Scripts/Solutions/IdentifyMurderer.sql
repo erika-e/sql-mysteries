@@ -10,8 +10,10 @@ SELECT gf.check_in_date
 , p.id 
 , p.license_id 
 , dl.plate_number 
+, i.transcript 
 FROM get_fit_now_check_in gf
 LEFT JOIN get_fit_now_member m on gf.membership_id = m.id 
 LEFT JOIN person p ON m.person_id = p.id
-LEFT JOIN drivers_license dl on p.license_id = dl.id 
+LEFT JOIN drivers_license dl on p.license_id = dl.id
+LEFT JOIN interview i on i.person_id = p.id 
 where gf.check_in_date = '20180109' and m.id LIKE('%48Z%') AND dl.plate_number LIKE ('%0H42%')
