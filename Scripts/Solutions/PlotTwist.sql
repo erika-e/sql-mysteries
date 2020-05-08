@@ -17,6 +17,7 @@ LEFT JOIN person p on dl.id = p.license_id
 LEFT JOIN events_by_person e ON p.id=e.person_id 
 AND e.event_name='SQL Symphony Concert' 
 AND e.event_year_month='2017-12'
+LEFT JOIN income i ON i.ssn = p.ssn
 WHERE dl.car_make = 'Tesla' 
 AND dl.car_model ='Model S'
 AND dl.hair_color = 'red'
