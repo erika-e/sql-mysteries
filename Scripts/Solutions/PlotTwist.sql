@@ -21,12 +21,14 @@ p.name
 , e.events_attended
 , e.event_year_month
 , i.annual_income 
+, iv.transcript 
 FROM drivers_license dl 
 LEFT JOIN person p on dl.id = p.license_id
 LEFT JOIN events_by_person e ON p.id=e.person_id 
 AND e.event_name='SQL Symphony Concert' 
 AND e.event_year_month='2017-12'
 LEFT JOIN income i ON i.ssn = p.ssn
+LEFT JOIN interview iv on iv.person_id = p.id 
 WHERE dl.car_make = 'Tesla' 
 AND dl.car_model ='Model S'
 AND dl.hair_color = 'red'
