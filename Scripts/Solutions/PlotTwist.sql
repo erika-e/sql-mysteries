@@ -5,12 +5,10 @@
 WITH events_by_person as (SELECT COUNT() as events_attended
 , person_id
 , event_name
-, substr(cast(date as char),1,4) as event_year
-, SUBSTR(cast(date as char),5,2) as event_month
+, substr(cast(date as char),1,4) || '-' || SUBSTR(cast(date as char),5,2) as event_year_month
 FROM facebook_event_checkin fec 
 WHERE event_name LIKE '%SQL%'
-GROUP BY event_name, person_id
-
+GROUP BY event_name, person_id, event_year_month
 )
 
 SELECT * 
