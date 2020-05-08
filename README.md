@@ -1,3 +1,7 @@
+# This is a fork of the SQL muder mystery that contains solutions
+
+Solutions are located in Scripts/Solutions
+
 # SQL Murder Mystery
 
 ![Illustration of a detective looking at evidence](174092-clue-illustration.png)
