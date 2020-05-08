@@ -2,18 +2,20 @@
 --She has red hair and she drives a Tesla Model S. 
 --I know that she attended the SQL Symphony Concert 3 times in December 2017.
 
-WITH events_by_person as (SELECT COUNT(person_id) as events_attended
+WITH events_by_person as (SELECT COUNT() as events_attended
 , person_id
 , event_name
 , substr(cast(date as char),1,4) as event_year
 , SUBSTR(cast(date as char),5,2) as event_month
 FROM facebook_event_checkin fec 
-GROUP BY event_name
-)
+WHERE event_name LIKE '%SQL%'
+GROUP BY event_name, person_id
 
+)
 
 SELECT * 
 FROM drivers_license dl 
+LEFT JOIN person p on dl.id = p.license_id 
 WHERE dl.car_make = 'Tesla' 
 AND dl.car_model ='Model S'
 AND dl.hair_color = 'red'
