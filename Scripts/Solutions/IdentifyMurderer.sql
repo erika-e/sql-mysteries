@@ -7,6 +7,7 @@ SELECT gf.check_in_date
 , gf.membership_id
 , m.membership_status
 , m.name
+, p.id 
 , p.license_id 
 , dl.plate_number 
 FROM get_fit_now_check_in gf
