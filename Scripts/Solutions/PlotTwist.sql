@@ -2,6 +2,16 @@
 --She has red hair and she drives a Tesla Model S. 
 --I know that she attended the SQL Symphony Concert 3 times in December 2017.
 
+WITH events_by_person as (SELECT COUNT(person_id) as events_attended
+, person_id
+, event_name
+, substr(cast(date as char),1,4) as event_year
+, SUBSTR(cast(date as char),5,2) as event_month
+FROM facebook_event_checkin fec 
+GROUP BY event_name
+)
+
+
 SELECT * 
 FROM drivers_license dl 
 WHERE dl.car_make = 'Tesla' 
